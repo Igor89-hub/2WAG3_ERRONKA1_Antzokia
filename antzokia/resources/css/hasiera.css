@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.a-main{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.a-main-header{
+    padding: 12px 24px;
+    width: 100%;
+    height: 114px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.a-main-headerTopBar{
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
