@@ -1,17 +1,28 @@
+import {TopBarCherry} from '../components/ui/topBarCherry';
+import {EkitaldiGehiagoTxartela} from '../components/ui/ekitaldiGehiagoTxartela';
 export default function Hasiera() {
-    return(
+    return (
         <>
-        <div className="a-main">
-            <header className="a-main-header">
-                <div className="a-main-headerTopBar">
-                    <img className="a-main-headerTopBar-logo" alt="TEATRO LOGOA"/>
+            <div className="a-main">
+                <TopBarCherry/>
+                <div className="a-main-aurrenekoEkitaldia">
+                    <div className="a-main-aurrenekoEkitaldia-Titulua">
+                        <h2 className="a-main-aurrenekoEkitaldia-ekitaldiIzena">HURBILEKO EMANALDIA AURKEZPENA</h2>
+                    </div>
+                    <div className="a-main-aurrenekoEkitaldia-data">
+                        <p className="a-main-aurrenekoEkitaldia-dataText">01/01/2025</p>
+                    </div>
+                    <div className="a-main-aurrenekoEkitaldia-botoia">
+                        <button type="button" className="a-main-aurrenekoEkitaldia-botoiaAkzioa" id="sarrerakErosi">Sarrerak Erosi</button>
+                    </div>
                 </div>
-                <p className="a-main-headerTopBar-SidebarButton">HamburgerLogo</p>
-            </header>
-            <div className="a-main-aurrenekoEkitaldia">
-                <h1>KAIXOO</h1>
+                <div className='a-main-ekitaldeGehiago'>
+                    <h2 className='a-main-ekitaldeGehiago-titulua'>Ekitaldi Gehiago</h2>
+                    <EkitaldiGehiagoTxartela/>
+                </div>
             </div>
-        </div>
         </>
+
     )
+
 }

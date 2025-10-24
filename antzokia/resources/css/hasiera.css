@@ -1,8 +1,15 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barrio&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
 }
-.a-main{
+
+.a-main {
     width: 100%;
     height: auto;
     overflow: hidden;
@@ -10,18 +17,98 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    box-sizing: border-box;
 }
-.a-main-header{
+
+.a-main-header {
     padding: 12px 24px;
     width: 100%;
     height: 114px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #550000;
+    box-sizing: border-box;
 }
-.a-main-headerTopBar{
+
+.a-main-headerTopBar {
     padding: 4px 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.a-main-aurrenekoEkitaldia {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #444444;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.a-main-aurrenekoEkitaldia-Titulua {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    box-sizing: border-box;
+}
+
+.a-main-aurrenekoEkitaldia-ekitaldiIzena {
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 500;
+}
+.a-main-aurrenekoEkitaldia-data{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    height: 100px;
+    box-sizing: border-box;
+}
+.a-main-aurrenekoEkitaldia-dataText{
+    padding: 4px 8px;
+    font-size: 20px;
+    font-weight: 200;
+}
+.a-main-aurrenekoEkitaldia-botoia{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    box-sizing: border-box;
+}
+.a-main-aurrenekoEkitaldia-botoiaAkzioa{
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    font-weight: 400;
+    background-color: #D4AF37;
+}
+.a-main-ekitaldeGehiago{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 12px 24px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+.a-main-ekitaldeGehiago-titulua{
+    color: black;
+    font-weight: 800;
+    text-align: center;
+    padding: 16px 32px;
 }
