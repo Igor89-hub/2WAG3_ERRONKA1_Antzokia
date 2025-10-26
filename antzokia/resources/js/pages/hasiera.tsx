@@ -1,4 +1,4 @@
-import {TopBarCherry} from '../components/ui/topBarCherry';
+import { TopBarCherry } from '@/components/ui/TopBarCherry';
 import {EkitaldiGehiagoTxartela} from '../components/ui/ekitaldiGehiagoTxartela';
 export default function Hasiera() {
     return (
