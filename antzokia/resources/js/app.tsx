@@ -1,6 +1,7 @@
 //import '../css/app.css';
 import '../css/hasiera.css';
 import '../css/ekitaldiGehiagoTxartela.css';
+import '../css/sideBarAntzokia.css';
 
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';

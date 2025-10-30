@@ -1,8 +1,10 @@
 import { TopBarCherry } from '@/components/ui/TopBarCherry';
+import { SideBarAntzokia } from '../components/ui/sideBarAntzokia';
 import { EkitaldiGehiagoTxartela } from '../components/ui/ekitaldiGehiagoTxartela';
 import { usePage } from '@inertiajs/react';
 import { ekitaldiak } from '@/actions/App/Http/Controllers/HasieraOrriaController';
 import { Key } from 'lucide-react';
+import { useState } from 'react';
 
 interface ekitaldiak {
     id_ekitaldia: number;
@@ -21,6 +23,11 @@ interface HasieraOrriaProps {
 
 export default function Hasiera({ aurrenekoEkitaldia, besteEkitaldiak }: HasieraOrriaProps) {
 
+    const[isSideBarDisplayed, setSideBarDisplayed] = useState(false)
+
+    const toggleSideBar:any = () => {
+        setSideBarDisplayed(prevState => !prevState)
+    }
     //DEBUGUEAR
     console.log('Datos conseguidos: ', aurrenekoEkitaldia);
 
@@ -29,7 +36,8 @@ export default function Hasiera({ aurrenekoEkitaldia, besteEkitaldiak }: Hasiera
     return (
         <>
             <div className="a-main">
-                <TopBarCherry />
+                <TopBarCherry toggleButton={toggleSideBar}/>
+                <SideBarAntzokia isDisplayed={isSideBarDisplayed} onClose={toggleSideBar}/>
                 <div className="a-main-aurrenekoEkitaldia">
                     <div className="a-main-aurrenekoEkitaldia-Titulua">
                         <h2 className="a-main-aurrenekoEkitaldia-ekitaldiIzena">
