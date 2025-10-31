@@ -72,6 +72,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 25px;
+    position: relative;
 }
 
 .sb-main-userProfileBar-profileIcon {
@@ -110,9 +111,44 @@
     align-items: center;
     justify-content: center;
     padding: 4px 8px;
+    user-select: none;
 }
 .sb-main-userProfileBar-dropUpMenu span{
     display: block;
     font-size: 50px;
     font-weight: 200;
+}
+.sb-main-userProfileBar-dropUpMenu-content{
+    background-color: #ED8E8E;
+    width: 100%;
+    height: auto;
+    bottom: 70%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border: none;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 8px;
+    overflow: hidden;
+    box-sizing: border-box;
+    visibility: hidden;
+    padding: 8px 16px;
+    z-index: -10;
+}
+.sb-main-userProfileBar-dropUpMenu-item{
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 8px 16px;
+    box-sizing: border-box;
+}
+.sb-main-userProfileBar-dropUpMenu-item span{
+    color: black;
+    display: block;
+    font-size: 25px;
+    font-weight: 800;
 }
