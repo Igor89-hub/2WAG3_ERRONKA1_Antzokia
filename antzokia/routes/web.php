@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HasieraOrriaController;
+use App\Http\Controllers\GuriBuruzController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,6 +16,7 @@ use Inertia\Inertia;
 });*/
 
 Route::get('/', [HasieraOrriaController::class, 'ekitaldiak'])->name('hasiera');
+Route::get('/guri_buruz', [GuriBuruzController::class, 'open'])->name('guri_buruz');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

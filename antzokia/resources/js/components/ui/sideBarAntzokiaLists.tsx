@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import { router } from "@inertiajs/react";
 
 interface SideBarAntzokiaListsProps {
     isDisplayed: Boolean
@@ -32,12 +33,15 @@ export function Lists({ isDisplayed }: SideBarAntzokiaListsProps) {
         }
     }, [isDisplayed]);
 
+    const handleGuriBuruz = () => {
+        router.get('/guri_buruz');
+    }
     return (
         <li className="sb-main-unOrdered-lists">
             <div className="sb-main-unOrdered-link">
                 <span className="sb-main-unOrdered-link-listItem">LANGILEAK</span>
                 <span className="sb-main-unOrdered-link-listItem">EKITALDIAK ALDATU</span>
-                <span className="sb-main-unOrdered-link-listItem">GURI BURUZ</span>
+                <span className="sb-main-unOrdered-link-listItem" onClick={() => handleGuriBuruz()}>GURI BURUZ</span>
                 <span className="sb-main-unOrdered-link-listItem">EKITALDIAK</span>
             </div>
         </li>
