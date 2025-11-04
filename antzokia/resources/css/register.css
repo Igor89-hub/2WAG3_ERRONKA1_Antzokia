@@ -1,0 +1,120 @@
+.r-main{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #550000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.r-main-card{
+    width: 100%;
+    height: 100%;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.r-main-card-header{
+    width: 100%;
+    height: auto;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.r-main-card-headerTitle{
+    font-weight: 300;
+    color: #D4AF37;
+    font-size: 50px;
+}
+
+.r-main-card-formContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 25px 25px;
+    box-sizing: border-box;
+}
+
+.r-main-card-formContainer-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 4px 8px;
+    gap: 10px;
+}
+
+.r-main-card-formContainer-formInput{
+    border: 2px solid black;
+    background-color: #820000;
+    width: 200px;
+    height: auto;
+    padding: 25px 30px;
+    font-size: 20px;
+    border-radius: 20px;
+    transition: 0.5s;
+    outline: none;
+    color: white;
+}
+
+.r-main-card-formContainer-formInput::placeholder{
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.r-main-card-formContainer-formInput:focus{
+    border: 2px solid #D4AF37;
+}
+
+.r-main-card-formContainer-formSpan{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: white;
+}
+
+.r-main-card-formContainer-formSpan-loginLink{
+    color: #00F0FF;
+    margin-left: 5px;
+}
+
+.r-main-card-formContainer-formSpan-loginLink:hover{
+    text-decoration: underline;
+}
+
+.r-main-card-formContainer-formSubmit{
+    height: auto;
+    width: auto;
+    padding: 20px 25px;
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.r-main-card-formContainer-formSubmit:hover{
+    background-color: #D4AF37;
+    color: black;
+}

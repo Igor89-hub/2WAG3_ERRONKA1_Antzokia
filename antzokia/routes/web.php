@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\EkitaldiakController;
 use App\Http\Controllers\HasieraOrriaController;
 use App\Http\Controllers\GuriBuruzController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,7 +19,10 @@ use Inertia\Inertia;
 });*/
 
 Route::get('/', [HasieraOrriaController::class, 'ekitaldiak'])->name('hasiera');
+Route::get('/ekitaldiak', [EkitaldiakController::class, 'getAllEkitaldiak'])->name('ekitaldiak');
 Route::get('/guri_buruz', [GuriBuruzController::class, 'open'])->name('guri_buruz');
+Route::get('/Users/login', [LoginController::class, 'openLogin'])->name('login');
+Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name('register');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
