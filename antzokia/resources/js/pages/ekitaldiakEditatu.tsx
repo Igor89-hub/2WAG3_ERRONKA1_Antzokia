@@ -21,7 +21,7 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
 
     console.log("Datos de la ekitaldia: ", ekitaldia);
 
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
         izena: '',
         deskribapena: '', // el backend espera 'deskribapena'
         hasiera_data: '',  // el backend espera 'hasiera_data'
@@ -48,12 +48,6 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
     const toggleSideBar: any = () => {
         setSideBarDisplayed(prevState => !prevState)
     }
-
-    const handleUpdateSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-
-        put(`/ekitaldiak/${ekitaldia?.id_ekitaldia}`)
-    }
     return (
         <div className="ed-main">
             <TopBarCherry toggleButton={toggleSideBar} />
@@ -64,7 +58,7 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
                 </header>
             </div>
             <div className='eb-main-form'>
-                <form className='eb-main-formTable' onSubmit={handleUpdateSubmit}>
+                <form className='eb-main-formTable'>
                     <button type='button' value="EZABATU" className='eb-main-formTable-inputGroup-submitErase'>EZABATU</button>
                     <input type="text" name="izena" value={data.izena} onChange={e => setData('izena', e.target.value)}
                         placeholder="Izena" className='eb-main-formTable-inputGroup' /> <br />
@@ -80,7 +74,7 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
                         onChange={e => setData('image', e.target.files ? e.target.files[0] : null)}
                         placeholder='Irudia Igo' name='imageUpload' /><br />
                     <img src={ekitaldia?.image_url ? ekitaldia.image_url : 'Irudirik ez'} alt={ekitaldia?.izena} />
-                    <button type='submit' value="GORDE" disabled={processing} className='eb-main-formTable-inputGroup-submit' name='bidali'>GORDE</button>
+                    <button type='submit' value="GORDE" className='eb-main-formTable-inputGroup-submit' name='bidali'>GORDE</button>
                 </form>
             </div>
         </div>
