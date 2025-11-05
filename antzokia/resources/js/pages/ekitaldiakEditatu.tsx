@@ -82,7 +82,7 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
                         onChange={e => setData('image', e.target.files ? e.target.files[0] : null)}
                         placeholder='Irudia Igo' name='imageUpload' /><br />
                     <img src={ekitaldia?.image_url ? ekitaldia.image_url : 'Irudirik ez'} alt={ekitaldia?.izena} />
-                    <button type='submit' value="GORDE" disabled={processinggit status} className='eb-main-formTable-inputGroup-submit' name='bidali'>GORDE</button>
+                    <button type='submit' value="GORDE" disabled={processing} className='eb-main-formTable-inputGroup-submit' name='bidali'>GORDE</button>
                 </form>
             </div>
         </div>
