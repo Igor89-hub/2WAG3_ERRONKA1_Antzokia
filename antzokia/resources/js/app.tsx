@@ -2,6 +2,10 @@
 import '../css/hasiera.css';
 import '../css/ekitaldiGehiagoTxartela.css';
 import '../css/sideBarAntzokia.css';
+import '../css/login.css';
+import '../css/register.css';
+import '../css/ekitaldiak.css';
+import '../css/ekitaldiBerria.css';
 import '../css/guri_Buruz.css';
 import '../css/ekitaldi_sortu.css';
 

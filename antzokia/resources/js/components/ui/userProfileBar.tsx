@@ -1,6 +1,7 @@
 import { FaRegUser } from "react-icons/fa";
 import gsap from 'gsap';
 import { useEffect, useState, useRef } from "react";
+import { router } from "@inertiajs/react";
 
 export function UserProfileBar() {
 
@@ -42,12 +43,17 @@ export function UserProfileBar() {
                 }
             })
         }
-    })
+    }, [isMenuOpened]);
+
+    const handleLoginAntzokia = () => {
+        router.visit('/Users/login');
+    }
+    
     return (
         <div className="sb-main-userProfileBar">
             <div ref={menuReferencia} className="sb-main-userProfileBar-dropUpMenu-content">
                 <div className="sb-main-userProfileBar-dropUpMenu-item">
-                    <span>Hasi Saioa</span>
+                    <span onClick={() => handleLoginAntzokia()}>Hasi Saioa</span>
                 </div>
             </div>
             <div className="sb-main-userProfileBar-profileIcon">
