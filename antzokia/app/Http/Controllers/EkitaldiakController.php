@@ -104,8 +104,6 @@ class EkitaldiakController extends Controller
         // return redirect()->route('hasiera');
 
         // O si usas Inertia, puedes devolver una respuesta de Inertia
-        return Inertia::render('ekitaldiak', [
-            'success' => 'Ekitaldia ondo sortu da!' // Mensaje de éxito
-        ]);
+         return redirect()->route('ekitaldiak')->with('success', 'Ekitaldia ondo eguneratu da!');
     }
 }

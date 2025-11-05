@@ -21,13 +21,14 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
 
     console.log("Datos de la ekitaldia: ", ekitaldia);
 
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
         izena: '',
         deskribapena: '', // el backend espera 'deskribapena'
         hasiera_data: '',  // el backend espera 'hasiera_data'
         bukaera_data: '',  // el backend espera 'bukaera_data'
         lekua: '',
         image: null as File | null,
+        _method: 'PUT', // CRÍTICO: Simula el método PUT
     });
 
     useEffect(() => {
@@ -38,7 +39,8 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
                 hasiera_data: ekitaldia.hasiera_data,
                 bukaera_data: ekitaldia.bukaera_data,
                 lekua: ekitaldia.lekua,
-
+                image: null,
+                _method: 'PUT'
             });
         }
     }, [ekitaldia])
@@ -53,7 +55,9 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
     const handleUpdateSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        put(`/ekitaldiak/${ekitaldia?.id_ekitaldia}`)
+        post(`/ekitaldiak/${ekitaldia?.id_ekitaldia}`, {
+            forceFormData: true,
+        })
     }
 
     return (
