@@ -24,7 +24,8 @@ Route::get('/', [HasieraOrriaController::class, 'ekitaldiak'])->name('hasiera');
 Route::get('/ekitaldiak', [EkitaldiakController::class, 'getAllEkitaldiak'])->name('ekitaldiak');
 Route::get('/guri_buruz', [GuriBuruzController::class, 'open'])->name('guri_buruz');
 Route::get('/ekitaldiakSortu', [EkitaldiBerriaController::class, 'open'])->name('ekitaldiakSortu');
-Route::get('/ekitaldiakEditatu/{ekitaldi}', [EkitaldiakEditatuController::class, 'open'])->name('ekitaldiakEditatu');
+//TIENES QUE PONER EXACTAMENTE EL MISMO NOMBRE QUE EN LA FUNCION DEL CONTROLADOR
+Route::get('/ekitaldiakEditatu/{ekitaldia}', [EkitaldiakEditatuController::class, 'open'])->name('ekitaldiakEditatu');
 Route::get('/Users/login', [LoginController::class, 'openLogin'])->name('login');
 Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name('register');
 
