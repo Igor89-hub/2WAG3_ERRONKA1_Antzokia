@@ -5,6 +5,7 @@ import '../css/sideBarAntzokia.css';
 import '../css/login.css';
 import '../css/register.css';
 import '../css/ekitaldiak.css';
+import '../css/ekitaldiBerria.css';
 
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
