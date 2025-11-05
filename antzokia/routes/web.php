@@ -32,5 +32,9 @@ Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name
 //POST KONTSULTAK
 Route::post('/ekitaldiak', [EkitaldiakController::class, 'store'])->name('ekitaldiak.store');
 
+Route::get('/ekitaldi_sortu', function () {
+    return Inertia::render('ekitaldi_sortu');
+})->name('ekitaldi_sortu');
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
