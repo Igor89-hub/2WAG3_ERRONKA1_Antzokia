@@ -18,5 +18,9 @@ use Inertia\Inertia;
 Route::get('/', [HasieraOrriaController::class, 'ekitaldiak'])->name('hasiera');
 Route::get('/guri_buruz', [GuriBuruzController::class, 'open'])->name('guri_buruz');
 
+Route::get('/ekitaldi_sortu', function () {
+    return Inertia::render('ekitaldi_sortu');
+})->name('ekitaldi_sortu');
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
