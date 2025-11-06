@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRole;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use App\Models\Langilea;
+use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Enum;
 
 class LangileakController extends Controller
 {
@@ -14,7 +18,7 @@ class LangileakController extends Controller
      */
     public function openLangileak()
     {
-        $langileGuztiak = DB::table('langileak')->get();
+        $langileGuztiak = User::all();
 
         return Inertia::render('langileak', [
             'langileGuztiak' => $langileGuztiak
@@ -26,20 +30,19 @@ class LangileakController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'izena' => 'required|string|max:255',
-            'abizenak' => 'required|string|max:255',
-            'emaila' => 'required|email|unique:langileak,emaila',
-            'telefonoa' => 'nullable|string|max:20',
-            'pasahitza' => 'required|string|min:6',
-            'baimen_mota' => 'required|string|max:100',
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        //     'role' => ['required',new Enum(UserRole::cases())],
+        // ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => $request->role,
         ]);
-
-        // pasahitza enkriptatu
-        $data = $request->only(['izena', 'abizenak', 'emaila', 'telefonoa', 'baimen_mota']);
-        $data['pasahitza'] = bcrypt($request->pasahitza);
-
-        Langilea::create($data);
 
         return redirect()->route('langileak')->with('success', 'Langilea ondo sortu da!');
     }

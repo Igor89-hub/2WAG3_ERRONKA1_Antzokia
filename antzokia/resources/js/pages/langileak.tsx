@@ -4,13 +4,12 @@ import { SideBarAntzokia } from '../components/ui/sideBarAntzokia';
 import { LangileGuztiakTxartela } from '@/components/ui/langileGuztiakTxartela';
 import { router, usePage } from '@inertiajs/react';
 
-interface Langilea {
-    id_langilea: number;
-    izena: string;
-    abizenak: string;
-    emaila: string;
-    telefonoa?: string;
-    baimen_mota: string;
+
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    role: string;
 }
 
 export default function Langileak() {
@@ -18,7 +17,7 @@ export default function Langileak() {
 
     // Inertia-tik datorren datua jaso
     const { props }: any = usePage();
-    const langileGuztiak: Langilea[] = props.langileGuztiak || [];
+    const langileGuztiak: User[] = props.langileGuztiak || [];
 
     const toggleSideBar = () => {
         setSideBarDisplayed((prevState) => !prevState);
@@ -45,11 +44,11 @@ export default function Langileak() {
 
             <div className="e-main-ekitaldiZerrenda">
                 {langileGuztiak.length > 0 ? (
-                    langileGuztiak.map((langilea) => (
+                    langileGuztiak.map((user) => (
                         <LangileGuztiakTxartela
-                            key={langilea.id_langilea}
-                            langilea={langilea}
-                            onEditatu={() => handleEditatuLangilea(langilea.id_langilea)}
+                            key={user.id}
+                            langilea={user}
+                            onEditatu={() => handleEditatuLangilea(user.id)}
                         />
                     ))
                 ) : (

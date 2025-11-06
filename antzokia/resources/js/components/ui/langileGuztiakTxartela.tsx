@@ -1,14 +1,12 @@
-interface Langilea {
-    id_langilea: number;
-    izena: string;
-    abizenak: string;
-    emaila: string;
-    telefonoa?: string; // telefonoa batzuetan null edo undefined izan daiteke
-    baimen_mota: string;
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    role: string;
 }
 
 interface LangileGuztiakTxartelProps {
-    langilea: Langilea;
+    langilea: User;
     onEditatu?: () => void; // ← gehitu dugu prop aukerazkoa
 }
 
@@ -17,13 +15,13 @@ export function LangileGuztiakTxartela({ langilea, onEditatu }: LangileGuztiakTx
         <div className="eg-main">
             <div className="ek-main-ekitakdiInformazioa">
                 <span className="ek-main-ekitakdiInformazioa-izena">
-                    {langilea.izena} {langilea.abizenak}
+                    {langilea.name}
                 </span>
                 <p className="ek-main-ekitakdiInformazioa-deskribapena">
-                    {langilea.emaila} • {langilea.telefonoa ?? '—'}
+                    {langilea.email}
                 </p>
                 <p className="ek-main-ekitakdiInformazioa-deskribapena">
-                    {langilea.baimen_mota}
+                    {langilea.role}
                 </p>
             </div>
 

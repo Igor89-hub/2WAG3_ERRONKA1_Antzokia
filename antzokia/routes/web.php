@@ -27,8 +27,8 @@ Route::get('/', [HasieraOrriaController::class, 'ekitaldiak'])->name('hasiera');
 Route::get('/ekitaldiak', [EkitaldiakController::class, 'getAllEkitaldiak'])->name('ekitaldiak');
 Route::get('/guri_buruz', [GuriBuruzController::class, 'open'])->name('guri_buruz');
 Route::get('/langileak', [LangileakController::class, 'openLangileak'])->name('langileak');
-Route::get('/langileakSortu', [LangileBerriaController::class, 'open'])->name('langileakSortu');
-Route::get('/langileakEditatu/{langilea}', [LangileakEditatuController::class, 'open'])->name('langileakEditatu');
+Route::get('/langileakSortu', action: [LangileBerriaController::class, 'open'])->name('langileakSortu');
+Route::get('/langileakEditatu/{user}', [LangileakEditatuController::class, 'open'])->name('langileakEditatu');
 Route::get('/ekitaldiakSortu', [EkitaldiBerriaController::class, 'open'])->name('ekitaldiakSortu');
 //TIENES QUE PONER EXACTAMENTE EL MISMO NOMBRE QUE EN LA FUNCION DEL CONTROLADOR
 Route::get('/ekitaldiakEditatu/{ekitaldia}', [EkitaldiakEditatuController::class, 'open'])->name('ekitaldiakEditatu');
@@ -47,8 +47,8 @@ Route::get('/ekitaldi_sortu', function () {
 Route::post('/langileak', [LangileakController::class, 'store'])->name('langileak.store');
 
 //PUT 
-Route::put('/langileakEditatu/{langilea}', [LangileakEditatuController::class, 'update'])->name('langileakEditatu.update');
+Route::put('/langileakEditatu/{user}', [LangileakEditatuController::class, 'update'])->name('langileakEditatu.update');
 
-Route::delete('/langileakEditatu/{langilea}', [LangileakEditatuController::class, 'destroy'])->name('langileakEditatu.destroy');
+Route::delete('/langileakEditatu/{user}', [LangileakEditatuController::class, 'destroy'])->name('langileakEditatu.destroy');
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
