@@ -104,4 +104,35 @@
     border: none;
     outline: none;
 }
+.eb-main-formTable-inputGroup-submit-editatu {
+    padding: 20px 25px;
+    width: 150px;
+    height: auto;
+    background-color: #FFD600; /* Amarillo fuerte */
+    font-size: 24px;
+    font-weight: 900;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+.eb-main-formTable-inputGroup-submit-editatu:hover {
+    background-color: #E6C200; /* Amarillo más oscuro */
+}
 
+/* Botón rojo: EZABATU */
+.eb-main-formTable-inputGroup-submit-ezabatu {
+    padding: 20px 25px;
+    width: 70%;
+    height: auto;
+    background-color: #E53935; /* Rojo */
+    font-size: 30px;
+    font-weight: 200;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+.eb-main-formTable-inputGroup-submit-ezabatu:hover {
+    background-color: #C62828; /* Rojo más oscuro */
+}

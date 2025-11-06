@@ -38,12 +38,16 @@ export function Lists({ isDisplayed }: SideBarAntzokiaListsProps) {
     }
 
     const handleEkitaldiGuztiak = () => {
-        router.visit('/ekitaldiak')
+        router.visit('/ekitaldiak');
+    }
+
+    const handleLangileak = () => {
+        router.visit('/langileak');
     }
     return (
         <li className="sb-main-unOrdered-lists">
             <div className="sb-main-unOrdered-link">
-                <span className="sb-main-unOrdered-link-listItem">LANGILEAK</span>
+                <span className="sb-main-unOrdered-link-listItem" onClick={() => handleLangileak()}>LANGILEAK</span>
                 <span className="sb-main-unOrdered-link-listItem" onClick={() => handleEkitaldiGuztiak()}>EKITALDIAK ALDATU</span>
                 <span className="sb-main-unOrdered-link-listItem" onClick={() => handleGuriBuruz()}>GURI BURUZ</span>
                 <span className="sb-main-unOrdered-link-listItem">EKITALDIAK</span>

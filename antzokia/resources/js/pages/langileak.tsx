@@ -1,0 +1,72 @@
+import { useState } from 'react'
+import { TopBarCherry } from '@/components/ui/TopBarCherry';
+import { SideBarAntzokia } from '../components/ui/sideBarAntzokia';
+import { LangileGuztiakTxartela } from '@/components/ui/langileGuztiakTxartela';
+import { router, usePage } from '@inertiajs/react';
+
+interface Langilea {
+    id_langilea: number;
+    izena: string;
+    abizenak: string;
+    emaila: string;
+    telefonoa?: string;
+    baimen_mota: string;
+}
+
+export default function Langileak() {
+    const [isSideBarDisplayed, setSideBarDisplayed] = useState(false);
+
+    // Inertia-tik datorren datua jaso
+    const { props }: any = usePage();
+    const langileGuztiak: Langilea[] = props.langileGuztiak || [];
+
+    const toggleSideBar = () => {
+        setSideBarDisplayed((prevState) => !prevState);
+    };
+
+    const handleLangileBerria = () => {
+        router.visit('/langileakSortu');
+    };
+
+    const handleEditatuLangilea = (id: number) => {
+        router.visit(`/langileakEditatu/${id}`);
+    };
+
+    return (
+        <div className="e-main">
+            <TopBarCherry toggleButton={toggleSideBar} />
+            <SideBarAntzokia isDisplayed={isSideBarDisplayed} onClose={toggleSideBar} />
+
+            <div className="e-main-pageTitle">
+                <header className="e-main-pageTitle-header">
+                    <h2 className="e-main-pageTitle-headerTitle">LANGILE GUZTIAK</h2>
+                </header>
+            </div>
+
+            <div className="e-main-ekitaldiZerrenda">
+                {langileGuztiak.length > 0 ? (
+                    langileGuztiak.map((langilea) => (
+                        <LangileGuztiakTxartela
+                            key={langilea.id_langilea}
+                            langilea={langilea}
+                            onEditatu={() => handleEditatuLangilea(langilea.id_langilea)}
+                        />
+                    ))
+                ) : (
+                    <p>Ez dago langilerik oraindik.</p>
+                )}
+            </div>
+
+            <div className="e-main-sortuBotoia">
+                <button
+                    type="button"
+                    className="e-main-sortuBotoia-route"
+                    id="sortuBotoia"
+                    onClick={handleLangileBerria}
+                >
+                    SORTU LANGILEA
+                </button>
+            </div>
+        </div>
+    );
+}
