@@ -44,6 +44,10 @@ export function Lists({ isDisplayed }: SideBarAntzokiaListsProps) {
     const handleLangileak = () => {
         router.visit('/langileak');
     }
+
+    const handleEkitaldiakUsers = () => {
+        router.visit('/ektaldiUsers');
+    }
     return (
         <li className="sb-main-unOrdered-lists">
             <div className="sb-main-unOrdered-link">
