@@ -17,6 +17,11 @@ class EkitaldiakController extends Controller
         return Inertia::render('ekitaldiak', ['ekitaldiGuztiak' => $ekitaldiGuztiak]);
     }
 
+    public function destroy(Ekitaldia $ekitaldia){
+        $ekitaldia->delete();
+        return redirect()->route('ekitaldiak')->with('message', 'Ekitaldia ezabatuta');
+    }
+
     public function store(Request $request)
     {
         // PASO 1: Validación (PDF Ataza 3 [cite: 25])
@@ -75,35 +80,21 @@ class EkitaldiakController extends Controller
 
             // Aquí la validación clave del PDF:
             // Usamos 'image' como el nombre del campo en el formulario
-            'image' => 'nullable|file|image|max:2048', // 2MB max [cite: 25]
+            'image' => 'nullable|file|image|max:2048',
         ]);
 
-        // PASO 2: Preparar los datos y guardar la imagen (PDF Ataza 3 [cite: 26, 27])
-
-        // Cogemos todos los datos validados, excepto el fichero en sí
         $data = $request->except('image');
         $data['image_url'] = $ekitaldia->image_url; // Valor por defecto si no hay imagen
 
-        // Verificamos si el usuario ha subido un fichero
         if ($request->hasFile('image')) {
 
-            // Guardamos la imagen en 'storage/app/public/ekitaldi_irudiak'
-            // y obtenemos la ruta relativa (ej: 'ekitaldi_irudiak/nombre_archivo.jpg')
             $path = $request->file('image')->store('ekitaldi_irudiak', 'public');
 
-            // Convertimos esa ruta en una URL pública (ej: '/storage/ekitaldi_irudiak/nombre_archivo.jpg')
-            // Esta es la URL que guardamos en la BBDD [cite: 28]
             $data['image_url'] = Storage::url($path);
         }
 
-        // PASO 3: Crear el Ekitaldia en la BBDD
-        // Usamos el modelo Ekitaldia, no el modelo User
         $ekitaldia->update($data);
 
-        // (Opcional) Cuando terminas, puedes redirigir a la home
-        // return redirect()->route('hasiera');
-
-        // O si usas Inertia, puedes devolver una respuesta de Inertia
          return redirect()->route('ekitaldiak')->with('success', 'Ekitaldia ondo eguneratu da!');
     }
 }

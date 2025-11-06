@@ -3,6 +3,7 @@ import { TopBarCherry } from '@/components/ui/TopBarCherry';
 import { SideBarAntzokia } from '../components/ui/sideBarAntzokia';
 import { EkitaldiGuztiak } from '@/components/ui/ekitaldiGuztiakTxartela';
 import { router } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 
 interface ekitaldiak {
     id_ekitaldia: number;
@@ -19,6 +20,8 @@ interface EkitaldiOrriaProps {
 }
 
 export default function EkitaldiakAntzokia({ ekitaldiGuztiak }: EkitaldiOrriaProps) {
+
+    const {processing, delete: destroy} = useForm();
 
     const [isSideBarDisplayed, setSideBarDisplayed] = useState(false)
 

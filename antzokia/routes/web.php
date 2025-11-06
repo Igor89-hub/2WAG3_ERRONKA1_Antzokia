@@ -31,6 +31,8 @@ Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name
 
 //POST KONTSULTAK
 Route::post('/ekitaldiak', [EkitaldiakController::class, 'store'])->name('ekitaldiak.store');
+Route::delete('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'destroy'])->name('ekitaldia.destroy');
+//PUT KONTSULTAK
 Route::put('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'update'])->name('ekitaldiak.update');
 
 Route::get('/ekitaldi_sortu', function () {

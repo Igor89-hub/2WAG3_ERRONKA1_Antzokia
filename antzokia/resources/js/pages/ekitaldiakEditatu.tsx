@@ -21,7 +21,7 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
 
     console.log("Datos de la ekitaldia: ", ekitaldia);
 
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post, processing, errors, delete: destroy } = useForm({
         izena: '',
         deskribapena: '', // el backend espera 'deskribapena'
         hasiera_data: '',  // el backend espera 'hasiera_data'
@@ -30,6 +30,14 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
         image: null as File | null,
         _method: 'PUT', // CRÍTICO: Simula el método PUT
     });
+
+    function PathParams(){
+        const path = window.location.pathname;
+        const segments = path.split("/");
+        const ekitaldiaId = segments[2];
+        console.log(ekitaldiaId);
+        return ekitaldiaId;
+    }
 
     useEffect(() => {
         if (ekitaldia) {
@@ -43,6 +51,8 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
                 _method: 'PUT'
             });
         }
+
+        PathParams();
     }, [ekitaldia])
 
     const [isSideBarDisplayed, setSideBarDisplayed] = useState(false)
@@ -60,6 +70,11 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
         })
     }
 
+    const handleDelete = (id: number | undefined) => {
+        if(confirm('Ziur zaude ekitaldi hau ezabatu nahi duzula? ' + id)){
+            destroy('/ekitaldiak/' + id)
+        }
+    }
     return (
         <div className="ed-main">
             <TopBarCherry toggleButton={toggleSideBar} />
@@ -71,7 +86,10 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
             </div>
             <div className='eb-main-form'>
                 <form className='eb-main-formTable' onSubmit={handleUpdateSubmit}>
-                    <button type='button' value="EZABATU" className='eb-main-formTable-inputGroup-submitErase'>EZABATU</button>
+                    <div className='eb-main-formTable-deleteEkitaldi'>
+                        <button type='button' value="EZABATU" className='eb-main-formTable-inputGroup-submitErase'
+                        onClick={() => handleDelete(ekitaldia?.id_ekitaldia)}>EZABATU</button>
+                    </div>
                     <input type="text" name="izena" value={data.izena} onChange={e => setData('izena', e.target.value)}
                         placeholder="Izena" className='eb-main-formTable-inputGroup' /> <br />
                     <input type="text" name="deskripzioa" value={data.deskribapena} onChange={e => setData('deskribapena', e.target.value)}
