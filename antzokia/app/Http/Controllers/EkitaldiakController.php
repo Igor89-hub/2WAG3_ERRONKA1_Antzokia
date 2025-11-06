@@ -17,9 +17,14 @@ class EkitaldiakController extends Controller
         return Inertia::render('ekitaldiak', ['ekitaldiGuztiak' => $ekitaldiGuztiak]);
     }
 
+    public function destroy(Ekitaldia $ekitaldia){
+        $ekitaldia->delete();
+        return redirect()->route('ekitaldiak')->with('message', 'Ekitaldia ezabatuta');
+    }
+
     public function store(Request $request)
     {
-// PASO 1: Validación (PDF Ataza 3 [cite: 25])
+        // PASO 1: Validación (PDF Ataza 3 [cite: 25])
         // Validamos los campos de un evento, no de un usuario
         $request->validate([
             'izena' => 'required|string|max:255',
@@ -33,7 +38,7 @@ class EkitaldiakController extends Controller
             'image' => 'nullable|file|image|max:2048', // 2MB max [cite: 25]
         ]);
 
-// PASO 2: Preparar los datos y guardar la imagen (PDF Ataza 3 [cite: 26, 27])
+        // PASO 2: Preparar los datos y guardar la imagen (PDF Ataza 3 [cite: 26, 27])
 
         // Cogemos todos los datos validados, excepto el fichero en sí
         $data = $request->except('image');
@@ -62,5 +67,34 @@ class EkitaldiakController extends Controller
         return Inertia::render('ekitaldiak', [
             'success' => 'Ekitaldia ondo sortu da!' // Mensaje de éxito
         ]);
+    }
+
+    public function update(Request $request, Ekitaldia $ekitaldia)
+    {
+        $request->validate([
+            'izena' => 'required|string|max:255',
+            'hasiera_data' => 'required|date',
+            'bukaera_data' => 'required|date',
+            'lekua' => 'required|string|max:255',
+            'deskribapena' => 'nullable|string',
+
+            // Aquí la validación clave del PDF:
+            // Usamos 'image' como el nombre del campo en el formulario
+            'image' => 'nullable|file|image|max:2048',
+        ]);
+
+        $data = $request->except('image');
+        $data['image_url'] = $ekitaldia->image_url; // Valor por defecto si no hay imagen
+
+        if ($request->hasFile('image')) {
+
+            $path = $request->file('image')->store('ekitaldi_irudiak', 'public');
+
+            $data['image_url'] = Storage::url($path);
+        }
+
+        $ekitaldia->update($data);
+
+         return redirect()->route('ekitaldiak')->with('success', 'Ekitaldia ondo eguneratu da!');
     }
 }

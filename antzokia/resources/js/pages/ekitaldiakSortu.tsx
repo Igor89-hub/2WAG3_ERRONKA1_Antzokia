@@ -10,11 +10,11 @@ export default function EkitaldiBerriaSortu() {
     // los mismos que espera tu controlador de Laravel
     const { data, setData, post, processing, errors } = useForm({
         izena: '',
-        deskribapena: '', // Tu backend espera 'deskribapena'
-        hasiera_data: '',  // Tu backend espera 'hasiera_data'
-        bukaera_data: '',  // Tu backend espera 'bukaera_data'
+        deskribapena: '', // el backend espera 'deskribapena'
+        hasiera_data: '',  // el backend espera 'hasiera_data'
+        bukaera_data: '',  // el backend espera 'bukaera_data'
         lekua: '',
-        image: null as File | null,       // Tu backend espera 'image'
+        image: null as File | null,       // el backend espera 'image'
     });
 
     const [isSideBarDisplayed, setSideBarDisplayed] = useState(false)

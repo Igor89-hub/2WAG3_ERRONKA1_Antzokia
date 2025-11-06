@@ -30,12 +30,20 @@ Route::get('/langileak', [LangileakController::class, 'openLangileak'])->name('l
 Route::get('/langileakSortu', [LangileBerriaController::class, 'open'])->name('langileakSortu');
 Route::get('/langileakEditatu/{langilea}', [LangileakEditatuController::class, 'open'])->name('langileakEditatu');
 Route::get('/ekitaldiakSortu', [EkitaldiBerriaController::class, 'open'])->name('ekitaldiakSortu');
-Route::get('/ekitaldiakEditatu/{ekitaldi}', [EkitaldiakEditatuController::class, 'open'])->name('ekitaldiakEditatu');
+//TIENES QUE PONER EXACTAMENTE EL MISMO NOMBRE QUE EN LA FUNCION DEL CONTROLADOR
+Route::get('/ekitaldiakEditatu/{ekitaldia}', [EkitaldiakEditatuController::class, 'open'])->name('ekitaldiakEditatu');
 Route::get('/Users/login', [LoginController::class, 'openLogin'])->name('login');
 Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name('register');
 
 //POST KONTSULTAK
 Route::post('/ekitaldiak', [EkitaldiakController::class, 'store'])->name('ekitaldiak.store');
+Route::delete('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'destroy'])->name('ekitaldia.destroy');
+//PUT KONTSULTAK
+Route::put('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'update'])->name('ekitaldiak.update');
+
+Route::get('/ekitaldi_sortu', function () {
+    return Inertia::render('ekitaldi_sortu');
+})->name('ekitaldi_sortu');
 Route::post('/langileak', [LangileakController::class, 'store'])->name('langileak.store');
 
 //PUT 
