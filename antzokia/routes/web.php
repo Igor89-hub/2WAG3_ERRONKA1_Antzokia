@@ -24,9 +24,8 @@ use Inertia\Inertia;
 });*/
 
 Route::get('/', [HasieraOrriaController::class, 'ekitaldiak'])->name('hasiera');
-Route::get('/ekitaldiak', [EkitaldiakController::class, 'getAllEkitaldiak'])->name('ekitaldiak');
+
 Route::get('/guri_buruz', [GuriBuruzController::class, 'open'])->name('guri_buruz');
-Route::get('/langileak', [LangileakController::class, 'openLangileak'])->name('langileak');
 Route::get('/langileakSortu', action: [LangileBerriaController::class, 'open'])->name('langileakSortu');
 Route::get('/langileakEditatu/{user}', [LangileakEditatuController::class, 'open'])->name('langileakEditatu');
 Route::get('/ekitaldiakSortu', [EkitaldiBerriaController::class, 'open'])->name('ekitaldiakSortu');
@@ -46,9 +45,14 @@ Route::get('/ekitaldi_sortu', function () {
 })->name('ekitaldi_sortu');
 Route::post('/langileak', [LangileakController::class, 'store'])->name('langileak.store');
 
-//PUT 
+//PUT
 Route::put('/langileakEditatu/{user}', [LangileakEditatuController::class, 'update'])->name('langileakEditatu.update');
 
+Route::middleware('can:view-users')->group(function () {
+    Route::get('/ekitaldiak', [EkitaldiakController::class, 'getAllEkitaldiak'])->name('ekitaldiak');
+    Route::get('/langileak', [LangileakController::class, 'openLangileak'])->name('langileak');
+});
+
 Route::delete('/langileakEditatu/{user}', [LangileakEditatuController::class, 'destroy'])->name('langileakEditatu.destroy');
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+require __DIR__ . '/settings.php';
+require __DIR__ . '/auth.php';

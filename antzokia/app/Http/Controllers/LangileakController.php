@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\LangileRole;
 use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,12 +31,12 @@ class LangileakController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        //     'role' => ['required',new Enum(UserRole::cases())],
-        // ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required',new Enum(LangileRole::cases())],
+        ]);
 
         $user = User::create([
             'name' => $request->name,
