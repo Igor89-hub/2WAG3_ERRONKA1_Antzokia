@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barrio&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+/* Contenedor raíz (mismo patrón que tu ejemplo) */
+.dp-main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 20px;
+}
+
+/* Título */
+.dp-main-title {
+  width: 100%;
+  background-color: #fff;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.dp-main-title-header {
+  padding: 20px 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.dp-main-title-headerTitle {
+  font-size: 30px;
+  color: #000;
+  text-align: center;
+}
+
+/* Form wrapper */
+.dp-main-form {
+  width: 100%;
+  padding: 40px 30px;
+  background: #fff;
+}
+
+.dp-main-formTable {
+  width: 100%;
+  max-width: 720px; /* un poco más ancho si hay desktop */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Inputs (mismo estilo que tu eb-*) */
+.dp-input {
+  width: 100%;
+  padding: 12px 24px;
+  border: 2px solid #000;
+  background-color: #E5E5E5;
+  font-size: 20px;
+  transition: background-color .2s;
+  color: #000;
+}
+
+.dp-input::placeholder {
+  color: #999;
+}
+
+.dp-input:focus {
+  outline: none;
+  background-color: #D5D5D5;
+}
+
+/* Errores */
+.dp-error {
+  color: #d00000;
+  font-size: 14px;
+}
+
+/* Botón principal azul (como tu submit) */
+.dp-submit {
+  padding: 20px 25px;
+  width: 70%;
+  max-width: 420px;
+  margin: 10px auto 0;
+  background-color: #D4AF37;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 200;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: filter .15s, transform .05s;
+}
+
+.dp-submit:hover {
+  filter: brightness(1.05);
+}
+
+.dp-submit:active {
+  transform: translateY(1px);
+}
+
+.dp-submit:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (min-width: 480px) {
+  .dp-main-form { padding: 40px 40px; }
+}
+@media (min-width: 768px) {
+  .dp-main-title-headerTitle { font-size: 34px; }
+  .dp-input { font-size: 18px; }
+}

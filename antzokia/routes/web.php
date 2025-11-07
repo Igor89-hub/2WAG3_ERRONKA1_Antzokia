@@ -13,6 +13,8 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\ErosketaController;
+
 /*Route::get('/', function () {
     return Inertia::render('hasiera');
 })->name('home');*/
@@ -40,10 +42,15 @@ Route::delete('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'destroy'
 //PUT KONTSULTAK
 Route::put('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'update'])->name('ekitaldiak.update');
 
-Route::get('/ekitaldi_sortu', function () {
-    return Inertia::render('ekitaldi_sortu');
-})->name('ekitaldi_sortu');
-Route::post('/langileak', [LangileakController::class, 'store'])->name('langileak.store');
+Route::get('/erosketa/{id_ekitaldia}', [ErosketaController::class, 'show'])
+    ->name('erosketa.show');
+
+Route::post('/erosketa', [ErosketaController::class, 'purchase'])
+    ->name('erosketa.purchase');
+
+Route::get('/DatuPertsonalak', function () {
+    return Inertia::render('DatuPertsonalak');
+})->name('DatuPertsonalak');
 
 //PUT
 Route::put('/langileakEditatu/{user}', [LangileakEditatuController::class, 'update'])->name('langileakEditatu.update');

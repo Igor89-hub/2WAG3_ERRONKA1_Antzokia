@@ -6,26 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ekitaldia extends Model
 {
-    /**
-     * Le decimos a Laravel que NO usamos 'created_at' y 'updated_at'.
-     * (¡Esto lo has puesto bien!)
-     */
+    protected $table = 'ekitaldiak';
+    protected $primaryKey = 'id_ekitaldia';
     public $timestamps = false;
 
-    /**
-     * ¡NUEVO! Le decimos a Laravel el nombre real de nuestra tabla.
-     */
-    protected $table = 'ekitaldiak';
+    protected $casts = [
+        'hasiera_data' => 'datetime',
+        'bukaera_data' => 'datetime',
+    ];
 
-    /**
-     * ¡NUEVO! Le decimos a Laravel cuál es nuestra clave primaria.
-     */
-    protected $primaryKey = 'id_ekitaldia';
-
-    /**
-     * Los campos que se pueden rellenar (esto ya lo tenías bien).
-     */
-    protected $fillable = [
+        protected $fillable = [
         'izena',
         'hasiera_data',
         'bukaera_data',
@@ -33,4 +23,10 @@ class Ekitaldia extends Model
         'deskribapena',
         'image_url',
     ];
+
+    public function eserlekuak()
+    {
+        return $this->belongsToMany(Eserleku::class, 'ekitaldi_eserleku', 'id_ekitaldia', 'id_eserleku')
+                    ->withPivot('hartuta');
+    }
 }
