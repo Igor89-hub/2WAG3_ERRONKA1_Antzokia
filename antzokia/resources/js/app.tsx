@@ -7,8 +7,6 @@ import '../css/register.css';
 import '../css/ekitaldiak.css';
 import '../css/ekitaldiBerria.css';
 import '../css/guri_Buruz.css';
-
-import '../css/ekitaldi_sortu.css';
 import '../css/ekitaldiaEditatu.css';
 import '../css/DatuPertsonalak.css';
 
