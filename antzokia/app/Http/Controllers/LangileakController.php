@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Enums\LangileRole;
-use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Langilea;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
 class LangileakController extends Controller
@@ -35,13 +36,13 @@ class LangileakController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required',new Enum(LangileRole::cases())],
+            'role' => ['required', Rule::enum(LangileRole::class)],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
 

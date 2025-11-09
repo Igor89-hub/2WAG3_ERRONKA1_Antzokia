@@ -50,6 +50,9 @@ class HandleInertiaRequests extends Middleware
                     'role' => $request->user()->role->value,
                     'can' => [
                         'viewUsers' => $request->user()->can('view-users'),
+                        'manageUsers' => $request->user()->can('manage-users'),
+                        'manageEkitaldiak' => $request->user()->can('manage-ekitaldiak'),
+                        'manageDenak' => $request->user()->can('view-denak')
                     ],
                 ] : null,
             ],

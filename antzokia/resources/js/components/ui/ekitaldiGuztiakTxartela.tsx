@@ -5,7 +5,7 @@ interface Ekitaldiak {
     bukaera_data: string;
     lekua: string;
     deskribapena: string;
-    image_url: string | null; 
+    image_url: string | null;
 }
 
 interface EkitaldiGuztiakTxartelProps {

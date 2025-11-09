@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
             'name' => 'Admin Nagusia User',
             'email' => 'admin@gmail.com',
             'role' => LangileRole::AdminNagusia,
-            'password' => Hash::make("12345")
+            'password' => Hash::make("admin12345")
         ]);
     }
 }
