@@ -13,6 +13,7 @@ interface ekitaldiak {
     bukaera_data: string;
     lekua: string;
     deskribapena: string;
+    image_url : string | null;
 }
 
 interface HasieraOrriaProps {

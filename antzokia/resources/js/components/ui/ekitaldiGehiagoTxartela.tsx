@@ -1,22 +1,33 @@
 
-    interface ekitaldiak {
-        id_ekitaldia: number;
-        izena: string;
-        hasiera_data: string;
-        bukaera_data: string;
-        lekua: string;
-        deskribapena: string;
-    }
+interface ekitaldiak {
+    id_ekitaldia: number;
+    izena: string;
+    hasiera_data: string;
+    bukaera_data: string;
+    lekua: string;
+    deskribapena: string;
+    image_url: string | null;
+}
 
-    interface besteEkitaldiProps {
-        besteEkitaldiak : ekitaldiak | null
-    }
-export function EkitaldiGehiagoTxartela({besteEkitaldiak} : besteEkitaldiProps) {
+interface besteEkitaldiProps {
+    besteEkitaldiak: ekitaldiak | null
+}
+export function EkitaldiGehiagoTxartela({ besteEkitaldiak }: besteEkitaldiProps) {
     return (
         <>
             <div className="eg-main">
                 <header className="eg-main-ekitakdiIrudia">
-                    <img className="eg-main-ekitakdiIrudia-img" alt="EKITALDIAREN IRUDIA" />
+                    {besteEkitaldiak?.image_url ? (
+                        <img className="eg-main-ekitakdiIrudia-img"
+                            src={besteEkitaldiak.image_url}
+                            alt={besteEkitaldiak.izena}
+                        />
+                    ) : (
+                        // Si NO hay URL, muestra un placeholder
+                        <div className="eg-main-irudia-placeholder">
+                            Irudirik ez
+                        </div>
+                    )}
                 </header>
                 <div className="eg-main-ekitakdiInformazioa">
                     <div className="eg-main-ekitakdiInformazioa-cotentSeparator">

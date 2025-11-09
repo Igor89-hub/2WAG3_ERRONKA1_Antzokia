@@ -1,11 +1,13 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import { router } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 
 interface SideBarAntzokiaListsProps {
     isDisplayed: Boolean
 }
 export function Lists({ isDisplayed }: SideBarAntzokiaListsProps) {
+
+    const { auth } = usePage<any>().props;
 
     useEffect(() => {
 
@@ -24,7 +26,7 @@ export function Lists({ isDisplayed }: SideBarAntzokiaListsProps) {
                     ease: 'power2.out'
                 }
             );
-        }else{
+        } else {
             //RESETEAMOS CUANDO EL SIDEBAR SE CIERRA
             gsap.set('.sb-main-unOrdered-link-listItem', {
                 opacity: 0,
@@ -51,8 +53,16 @@ export function Lists({ isDisplayed }: SideBarAntzokiaListsProps) {
     return (
         <li className="sb-main-unOrdered-lists">
             <div className="sb-main-unOrdered-link">
-                <span className="sb-main-unOrdered-link-listItem" onClick={() => handleLangileak()}>LANGILEAK</span>
-                <span className="sb-main-unOrdered-link-listItem" onClick={() => handleEkitaldiGuztiak()}>EKITALDIAK ALDATU</span>
+                {auth.user && (
+                    <>
+                        {auth.user.can.manageUsers && (
+                            <span className="sb-main-unOrdered-link-listItem" onClick={() => handleLangileak()}>LANGILEAK</span>
+                        )}
+                        {auth.user.can.manageEkitaldiak && (
+                            <span className="sb-main-unOrdered-link-listItem" onClick={() => handleEkitaldiGuztiak()}>EKITALDIAK ALDATU</span>
+                        )}
+                    </>
+                )}
                 <span className="sb-main-unOrdered-link-listItem" onClick={() => handleGuriBuruz()}>GURI BURUZ</span>
                 <span className="sb-main-unOrdered-link-listItem">EKITALDIAK</span>
             </div>
