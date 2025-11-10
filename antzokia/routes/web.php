@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\EkitaldiakController;
 use App\Http\Controllers\EkitaldiakEditatuController;
+use App\Http\Controllers\EkitaldiakUsersController;
+use App\Http\Controllers\EkitaldiakUserXehetasunakController;
 use App\Http\Controllers\EkitaldiBerriaController;
 use App\Http\Controllers\HasieraOrriaController;
 use App\Http\Controllers\GuriBuruzController;
@@ -35,6 +37,8 @@ Route::get('/ekitaldiakEditatu/{ekitaldia}', [EkitaldiakEditatuController::class
 Route::get('/Users/login', [LoginController::class, 'openLogin'])->name('login');
 Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name('register');
 
+Route::get('/ekitaldiakUsers', [EkitaldiakUsersController::class, 'open'])->name('ekitaldiakUsers');
+Route::get('/ekitaldiakUserXehetasunak/{id}', [EkitaldiakUserXehetasunakController::class, 'getEkitaldiaById'])->name('ekitaldia.xehetasunak');
 //POST KONTSULTAK
 Route::post('/ekitaldiak', [EkitaldiakController::class, 'store'])->name('ekitaldiak.store');
 Route::delete('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'destroy'])->name('ekitaldia.destroy');
