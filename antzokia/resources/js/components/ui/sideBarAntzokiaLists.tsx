@@ -48,7 +48,7 @@ export function Lists({ isDisplayed }: SideBarAntzokiaListsProps) {
     }
 
     const handleEkitaldiakUsers = () => {
-        router.visit('/ektaldiUsers');
+        router.visit('/ekitaldiakUsers');
     }
     return (
         <li className="sb-main-unOrdered-lists">
@@ -64,7 +64,7 @@ export function Lists({ isDisplayed }: SideBarAntzokiaListsProps) {
                     </>
                 )}
                 <span className="sb-main-unOrdered-link-listItem" onClick={() => handleGuriBuruz()}>GURI BURUZ</span>
-                <span className="sb-main-unOrdered-link-listItem">EKITALDIAK</span>
+                <span className="sb-main-unOrdered-link-listItem" onClick={() => handleEkitaldiakUsers()}>EKITALDIAK</span>
             </div>
         </li>
     )

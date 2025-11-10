@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\EkitaldiakController;
 use App\Http\Controllers\EkitaldiakEditatuController;
+use App\Http\Controllers\EkitaldiakUsersController;
+use App\Http\Controllers\EkitaldiakUserXehetasunakController;
 use App\Http\Controllers\EkitaldiBerriaController;
 use App\Http\Controllers\HasieraOrriaController;
 use App\Http\Controllers\GuriBuruzController;
@@ -85,6 +87,27 @@ Route::post('/erosketa', [ErosketaController::class, 'purchase'])
 Route::get('/DatuPertsonalak', function () {
     return Inertia::render('DatuPertsonalak');
 })->name('DatuPertsonalak');
+Route::get('/langileak', [LangileakController::class, 'openLangileak'])->name('langileak');
+Route::get('/langileakSortu', action: [LangileBerriaController::class, 'open'])->name('langileakSortu');
+Route::get('/langileakEditatu/{user}', [LangileakEditatuController::class, 'open'])->name('langileakEditatu');
+Route::get('/ekitaldiakSortu', [EkitaldiBerriaController::class, 'open'])->name('ekitaldiakSortu');
+//TIENES QUE PONER EXACTAMENTE EL MISMO NOMBRE QUE EN LA FUNCION DEL CONTROLADOR
+Route::get('/ekitaldiakEditatu/{ekitaldia}', [EkitaldiakEditatuController::class, 'open'])->name('ekitaldiakEditatu');
+Route::get('/Users/login', [LoginController::class, 'openLogin'])->name('login');
+Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name('register');
+
+Route::get('/ekitaldiakUsers', [EkitaldiakUsersController::class, 'open'])->name('ekitaldiakUsers');
+Route::get('/ekitaldiakUserXehetasunak/{id}', [EkitaldiakUserXehetasunakController::class, 'getEkitaldiaById'])->name('ekitaldia.xehetasunak');
+//POST KONTSULTAK
+Route::post('/ekitaldiak', [EkitaldiakController::class, 'store'])->name('ekitaldiak.store');
+Route::delete('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'destroy'])->name('ekitaldia.destroy');
+//PUT KONTSULTAK
+Route::put('/ekitaldiak/{ekitaldia}', [EkitaldiakController::class, 'update'])->name('ekitaldiak.update');
+
+Route::get('/ekitaldi_sortu', function () {
+    return Inertia::render('ekitaldi_sortu');
+})->name('ekitaldi_sortu');
+Route::post('/langileak', [LangileakController::class, 'store'])->name('langileak.store');
 
 //PUT
 Route::put('/langileakEditatu/{user}', [LangileakEditatuController::class, 'update'])->name('langileakEditatu.update');
