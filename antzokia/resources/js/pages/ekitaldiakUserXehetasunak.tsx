@@ -1,4 +1,5 @@
 import { TopBarCherry } from '@/components/ui/TopBarCherry';
+import { SideBarAntzokia } from '@/components/ui/sideBarAntzokia';
 import { useState } from 'react';
 import { router } from '@inertiajs/react';
 
@@ -28,7 +29,7 @@ export default function EkitaldiakUserXehetasunak({ ekitaldia }: EkitaldiXehetas
     return (
         <div className="e-main">
             <TopBarCherry toggleButton={toggleSideBar} />
-
+            <SideBarAntzokia isDisplayed={isSideBarDisplayed} onClose={toggleSideBar}/>
             <div
                 style={{
                     width: "100%",

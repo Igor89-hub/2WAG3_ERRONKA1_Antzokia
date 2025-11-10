@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TopBarCherry } from '@/components/ui/TopBarCherry';
+import { SideBarAntzokia } from '@/components/ui/sideBarAntzokia';
 import { EkitaldiGuztiak } from '@/components/ui/ekitaldiGuztiakTxartela';
 import { router } from '@inertiajs/react';
 
@@ -37,6 +38,7 @@ export default function EkitaldiakUser({ ekitaldiGuztiak }: EkitaldiOrriaProps) 
     return (
         <div className="e-main">
             <TopBarCherry toggleButton={toggleSideBar} />
+            <SideBarAntzokia isDisplayed={isSideBarDisplayed} onClose={toggleSideBar}/>
             <div className='e-main-pageTitle'>
                 <header className='e-main-pageTitle-header'>
                     <h2 className='e-main-pageTitle-headerTitle'>EKITALDIEN ZERRENDA</h2>
