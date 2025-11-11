@@ -12,6 +12,7 @@ use App\Http\Controllers\LangileakEditatuController;
 use App\Http\Controllers\LangileBerriaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DatuPertsonalakControler;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -86,9 +87,11 @@ Route::get('/erosketa/{id_ekitaldia}', [ErosketaController::class, 'show'])
 Route::post('/erosketa', [ErosketaController::class, 'purchase'])
     ->name('erosketa.purchase');
 
-Route::get('/DatuPertsonalak', function () {
-    return Inertia::render('DatuPertsonalak');
-})->name('DatuPertsonalak');
+Route::get('/DatuPertsonalak', [DatuPertsonalakControler::class, 'open'])
+    ->name('DatuPertsonalak');
+
+Route::post('/DatuPertsonalak', [DatuPertsonalakControler::class, 'store'])
+    ->name('DatuPertsonalak.store');
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

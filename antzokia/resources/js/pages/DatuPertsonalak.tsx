@@ -5,23 +5,17 @@ import { useForm } from "@inertiajs/react";
 
 
 export default function DatuPertsonalak() {
-  // useForm con los campos que vas a enviar al backend
   const { data, setData, post, processing, errors } = useForm({
-    izena: "",
-    abizenak: "",
-    telefonoa: "",
-    posta_kodea: "",
-    emaila: "",
-    emaila_berriro: "",
+    izena: "", abizenak: "", telefonoa: "", posta_kodea: "",
+    emaila: "", emaila_berriro: "",
   });
 
-  const [isSideBarDisplayed, setSideBarDisplayed] = useState<boolean>(false);
-  const toggleSideBar = () => setSideBarDisplayed((s) => !s);
+  const [isSideBarDisplayed, setSideBarDisplayed] = useState(false);
+  const toggleSideBar = () => setSideBarDisplayed(s => !s);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // usa la URL directa; cambia si necesitas otra ruta
-    post("/datupertsonalak");
+    post('/DatuPertsonalak'); // ← ruta POST real
   }
 
   return (

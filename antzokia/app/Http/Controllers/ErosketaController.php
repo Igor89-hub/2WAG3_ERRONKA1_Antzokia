@@ -41,26 +41,45 @@ class ErosketaController extends Controller
             'data_ordua'   => ['required','date'], // desde el picker
         ]);
 
+            \Log::info('===== PURCHASE =====');
+            \Log::info('Datos validados:', $data);
+
         // Transacción + lock optimista para evitar doble venta
-        return DB::transaction(function () use ($data) {
-            $updated = DB::table('ekitaldi_eserleku')
+        return \DB::transaction(function () use ($data, $request) {
+            $updated = \DB::table('ekitaldi_eserleku')
                 ->where('id_ekitaldia', $data['id_ekitaldia'])
                 ->where('id_eserleku',  $data['id_eserleku'])
                 ->where(function($q){ $q->whereNull('hartuta')->orWhere('hartuta', false); })
                 ->update(['hartuta' => true]);
 
             if ($updated === 0) {
-                return back()->withErrors([
-                    'global' => 'Eserleku hori dagoeneko hartuta dago.',
-                ]);
+                return back()->withErrors(['global' => 'Eserleku hori dagoeneko hartuta dago.']);
             }
+            // if ($updated === 0) {
+            //     return back()->withErrors([
+            //         'global' => 'Eserleku hori dagoeneko hartuta dago.',
+            //     ]);
+            // }
 
             // Aquí podrías insertar en 'ikusi' o crear ticket real si quieres.
             // DB::table('ikusi')->insert([...]);
 
-            return redirect()
-                ->route('erosketa.show', $data['id_ekitaldia'])
-                ->with('success', 'Erosketa ondo burutu da!');
+        // Redirige a DatuPertsonalak con datos en sesión
+
+        //GUARDAR EN SESIÓN ANTES DEL REDIRECT
+        $compraData = [
+            'id_ekitaldia' => $data['id_ekitaldia'],
+            'id_eserleku'  => $data['id_eserleku'],
+            'data_ordua'   => $data['data_ordua'],
+        ];
+
+        $request->session()->put('compra', $compraData);
+
+
+        //Solo el mensaje de éxito va en with()
+        return redirect()
+            ->route('DatuPertsonalak')
+            ->with('success', 'Erosketa ondo burutu da!');
         });
     }
     

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useForm } from "@inertiajs/react";
+import { useForm, router, } from '@inertiajs/react';
+
 
 // Header + Sidebar (usa tus componentes reales)
 import { TopBarCherry } from "@/components/ui/TopBarCherry";
@@ -21,18 +22,10 @@ type Ekitaldia = {
   bukaera_data: string | null;
 };
 
-export default function SarrerakErosketa({
-  ekitaldia,
-  eserlekuak,
-}: {
-  ekitaldia: Ekitaldia;
-  eserlekuak: Eserleku[];
-}) {
-  // --- Header / Sidebar ---
+export default function SarrerakErosketa({ ekitaldia, eserlekuak }: { ekitaldia: Ekitaldia; eserlekuak: Eserleku[]; }) {
   const [isSideBarDisplayed, setSideBarDisplayed] = useState(false);
   const toggleSideBar = () => setSideBarDisplayed((s) => !s);
 
-  // --- Form / lógica de compra ---
   const [selectedSeat, setSelectedSeat] = useState<number | null>(null);
 
   const { data, setData, post, processing, errors } = useForm({
@@ -42,17 +35,16 @@ export default function SarrerakErosketa({
   });
 
   function pickSeat(id: number, ocupado?: boolean | null) {
-    if (ocupado) return; // no permitir seleccionar ocupados
+    if (ocupado) return;
     setSelectedSeat(id);
     setData("id_eserleku", id);
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    post("/erosketa");
+    post('/erosketa'); // el servidor redirige a /DatuPertsonalak con la sesión poblada
   }
 
-  // Para poder leer un posible errors.global (opción B)
   const anyErrors = errors as unknown as Record<string, string>;
 
   return (
@@ -102,20 +94,9 @@ export default function SarrerakErosketa({
 
         <form className="se-form" onSubmit={handleSubmit}>
           <div className="se-block">
-            <h2 className="se-subtitle">Aukeratu zure data</h2>
 
-            <div className="se-picker">
-              <span className="se-caret">▾</span>
-              <input
-                type="datetime-local"
-                className="se-input"
-                value={data.data_ordua}
-                onChange={(e) => setData("data_ordua", e.target.value)}
-                min={ekitaldia.hasiera_data ?? undefined}
-                max={ekitaldia.bukaera_data ?? undefined}
-                required
-              />
-            </div>
+
+  
             {errors.data_ordua && <p className="se-error">{errors.data_ordua}</p>}
           </div>
 
