@@ -33,3 +33,28 @@
 .se-cta:hover{filter:brightness(1.05)}
 .se-cta:active{transform:translateY(1px)}
 .se-cta:disabled{opacity:.6;cursor:not-allowed}
+/* --- Letras de los asientos en dorado --- */
+.se-seat-text {
+  color: #d4af37; /* dorado elegante */
+  font-weight: 700; /* un poco más grueso, opcional */
+}
+/* Hace que el <select> tenga el mismo look que .se-input */
+.se-select {
+  appearance: none;        /* oculta flecha nativa */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #d9d9d9;
+  cursor: pointer;
+}
+
+/* Opcional: texto de opciones ocupadas en gris */
+.se-select option[disabled] {
+  color: #888;
+}
+
+/* (Por tu petición anterior) solo el texto del asiento en dorado si lo deseas */
+.se-select option:not([disabled]) {
+  color: #d4af37;
+  font-weight: 700;
+}
+
