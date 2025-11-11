@@ -228,7 +228,7 @@ Talde-lana ona izan da, lana banatzen jakin dugu eta arazoren bat izan dugunean 
 
 ### 1. Eranskina: Talde kontratua
 
-![Talde kontratua](./images/Talde_kontratua.pdf)
+![Talde kontratua](./images/Talde_kontratua.jpg)
 
 ### 2. Eranskina: Entitate-Erlazio diagrama
 
