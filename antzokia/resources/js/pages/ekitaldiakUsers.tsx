@@ -28,7 +28,7 @@ export default function EkitaldiakUser({ ekitaldiGuztiak }: EkitaldiOrriaProps) 
 
     const handleErosiSarrerak = (id: number, e: React.MouseEvent) => {
         e.stopPropagation(); // Evita que se active el onClick del div padre
-        router.visit(`/ekitaldia/${id}`);
+        router.visit(`/erosketa/${id}`);
     };
 
     const handleEkitakdiXehetasunak = (id: number) => {
@@ -60,15 +60,7 @@ export default function EkitaldiakUser({ ekitaldiGuztiak }: EkitaldiOrriaProps) 
                                 }}>
                                     <button
                                         onClick={(e) => handleErosiSarrerak(eki.id_ekitaldia, e)}
-                                        style={{
-                                            backgroundColor: "#d4a017",
-                                            border: "none",
-                                            borderRadius: "15px",
-                                            padding: "8px 15px",
-                                            fontWeight: "bold",
-                                            color: "white",
-                                            cursor: "pointer"
-                                        }}
+                                        className='eg-main-ekitakdiInformazioa-erosiBotoia'
                                     >
                                         Sarrerak Erosi
                                     </button>

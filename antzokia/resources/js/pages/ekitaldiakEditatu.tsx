@@ -90,6 +90,7 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
                         <button type='button' value="EZABATU" className='eb-main-formTable-inputGroup-submitErase'
                         onClick={() => handleDelete(ekitaldia?.id_ekitaldia)}>EZABATU</button>
                     </div>
+                    
                     <input type="text" name="izena" value={data.izena} onChange={e => setData('izena', e.target.value)}
                         placeholder="Izena" className='eb-main-formTable-inputGroup' /> <br />
                     <input type="text" name="deskripzioa" value={data.deskribapena} onChange={e => setData('deskribapena', e.target.value)}
@@ -103,9 +104,21 @@ export default function EkitaldiakEditatu({ ekitaldia }: ekitaldia) {
                     <input type="file" className='eb-main-formTable-inputGroup' accept="image/*"
                         onChange={e => setData('image', e.target.files ? e.target.files[0] : null)}
                         placeholder='Irudia Igo' name='imageUpload' /><br />
-                    <img src={ekitaldia?.image_url ? ekitaldia.image_url : 'Irudirik ez'} alt={ekitaldia?.izena} />
+                   <div className="eb-main-formTable-preview">
+  {(data.image || ekitaldia?.image_url) ? (
+    <img
+      className="eb-main-formTable-previewImg"
+      src={data.image ? URL.createObjectURL(data.image) : (ekitaldia!.image_url as string)}
+      alt={ekitaldia?.izena || 'Ekitaldia'}
+    />
+  ) : (
+    <div className="eb-main-formTable-previewPlaceholder">Irudirik ez</div>
+  )}
+</div>
+
                     <button type='submit' value="GORDE" disabled={processing} className='eb-main-formTable-inputGroup-submit' name='bidali'>GORDE</button>
                 </form>
+                
             </div>
         </div>
     )

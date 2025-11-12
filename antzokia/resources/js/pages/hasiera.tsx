@@ -1,81 +1,86 @@
 import { TopBarCherry } from '@/components/ui/TopBarCherry';
 import { SideBarAntzokia } from '../components/ui/sideBarAntzokia';
 import { EkitaldiGehiagoTxartela } from '../components/ui/ekitaldiGehiagoTxartela';
-import { usePage } from '@inertiajs/react';
-import { ekitaldiak } from '@/actions/App/Http/Controllers/HasieraOrriaController';
-import { Key } from 'lucide-react';
+import { router } from '@inertiajs/react';           // 👈 importa router
 import { useState } from 'react';
 
 interface ekitaldiak {
-    id_ekitaldia: number;
-    izena: string;
-    hasiera_data: string;
-    bukaera_data: string;
-    lekua: string;
-    deskribapena: string;
-    image_url : string | null;
+  id_ekitaldia: number;
+  izena: string;
+  hasiera_data: string;
+  bukaera_data: string;
+  lekua: string;
+  deskribapena: string;
+  image_url: string | null;
 }
 
 interface HasieraOrriaProps {
-    aurrenekoEkitaldia: ekitaldiak | null,
-    besteEkitaldiak: ekitaldiak[] | null,
+  aurrenekoEkitaldia: ekitaldiak | null;
+  besteEkitaldiak: ekitaldiak[] | null;
 }
 
-
 export default function Hasiera({ aurrenekoEkitaldia, besteEkitaldiak }: HasieraOrriaProps) {
+  const [isSideBarDisplayed, setSideBarDisplayed] = useState(false);
+  const toggleSideBar = () => setSideBarDisplayed(prev => !prev);
 
-    const[isSideBarDisplayed, setSideBarDisplayed] = useState(false)
+  // 👇 función de navegación a /erosketa/{id}
+  const goToBuy = (id: number) => router.visit(`/erosketa/${id}`);
 
-    const toggleSideBar:any = () => {
-        setSideBarDisplayed(prevState => !prevState)
-    }
-    //DEBUGUEAR
-    console.log('Datos conseguidos: ', aurrenekoEkitaldia);
+  return (
+    <div className="a-main">
+      <TopBarCherry toggleButton={toggleSideBar} />
+      <SideBarAntzokia isDisplayed={isSideBarDisplayed} onClose={toggleSideBar} />
 
-    console.log("Beste ekitaldiak: ", besteEkitaldiak)
+      <div className="a-main-aurrenekoEkitaldia">
+        <div className="a-main-aurrenekoEkitaldia-Titulua">
+          <h2 className="a-main-aurrenekoEkitaldia-ekitaldiIzena">
+            {aurrenekoEkitaldia ? aurrenekoEkitaldia.izena : 'HURRENKO EKITALDIA'}
+          </h2>
+        </div>
+        <div className="a-main-aurrenekoEkitaldia-data">
+          <p className="a-main-aurrenekoEkitaldia-dataTestua">
+            {aurrenekoEkitaldia
+              ? `Hasiera Data: ${aurrenekoEkitaldia.hasiera_data}`
+              : 'Hasiera Data: 01/01/2025'}
+          </p>
+        </div>
 
-    return (
-        <>
-            <div className="a-main">
-                <TopBarCherry toggleButton={toggleSideBar}/>
-                <SideBarAntzokia isDisplayed={isSideBarDisplayed} onClose={toggleSideBar}/>
-                <div className="a-main-aurrenekoEkitaldia">
-                    <div className="a-main-aurrenekoEkitaldia-Titulua">
-                        <h2 className="a-main-aurrenekoEkitaldia-ekitaldiIzena">
-                            {aurrenekoEkitaldia ? aurrenekoEkitaldia.izena : 'HURRENKO EKITALDIA'}
-                        </h2>
-                    </div>
-                    <div className="a-main-aurrenekoEkitaldia-data">
-                        <p className="a-main-aurrenekoEkitaldia-dataTestua">
-                            {aurrenekoEkitaldia ? 'Hasiera Data: ' + aurrenekoEkitaldia.hasiera_data : 'Hasiera Data: 01/01/2025'}
-                        </p>
-                    </div>
-                    <div className="a-main-aurrenekoEkitaldia-botoia">
-                        <button type="button" className="a-main-aurrenekoEkitaldia-botoiaAkzioa" id="sarrerakErosi">Sarrerak Erosi</button>
-                    </div>
-                </div>
-                <div className='a-main-ekitaldeGehiago'>
-                    <h2 className='a-main-ekitaldeGehiago-titulua'>Ekitaldi Gehiago</h2>
-                    {besteEkitaldiak ? ( // Comprueba si besteEkitaldiak existe
-                        besteEkitaldiak.length > 0 ? ( // Si existe, comprueba si tiene elementos
-                            besteEkitaldiak.map((ekitaldi) => (
-                                <EkitaldiGehiagoTxartela
-                                    key={ekitaldi.id_ekitaldia}
-                                    besteEkitaldiak={ekitaldi}
-                                />
-                            ))
-                        ) : (
-                            // QUÉ FALTA 1: Esto se muestra si el array está vacío
-                            <p>Ez dago ekitaldi gehiagorik.</p>
-                        )
-                    ) : (
-                        // QUÉ FALTA 2: Esto se muestra si besteEkitaldiak es null o undefined
-                        <p>Ekitaldiak kargatzen...</p>
-                    )}
-                </div>
-            </div>
-        </>
+        {/* 👇 botón principal -> /erosketa/{id} */}
+        <div className="a-main-aurrenekoEkitaldia-botoia">
+          <button
+            type="button"
+            className="a-main-aurrenekoEkitaldia-botoiaAkzioa"
+            id="sarrerakErosi"
+            onClick={() => aurrenekoEkitaldia && goToBuy(aurrenekoEkitaldia.id_ekitaldia)}
+            disabled={!aurrenekoEkitaldia}
+          >
+            Sarrerak Erosi
+          </button>
+        </div>
+      </div>
 
-    )
+      <div className="a-main-ekitaldeGehiago">
+        <h2 className="a-main-ekitaldeGehiago-titulua">Ekitaldi Gehiago</h2>
 
+        {besteEkitaldiak ? (
+          besteEkitaldiak.length > 0 ? (
+            besteEkitaldiak.map((ekitaldi) => (
+              // 👇 toda la tarjeta navega a /erosketa/{id}
+              <div
+                key={ekitaldi.id_ekitaldia}
+                onClick={() => goToBuy(ekitaldi.id_ekitaldia)}
+                style={{ cursor: 'pointer' }}
+              >
+                <EkitaldiGehiagoTxartela besteEkitaldiak={ekitaldi} />
+              </div>
+            ))
+          ) : (
+            <p>Ez dago ekitaldi gehiagorik.</p>
+          )
+        ) : (
+          <p>Ekitaldiak kargatzen...</p>
+        )}
+      </div>
+    </div>
+  );
 }

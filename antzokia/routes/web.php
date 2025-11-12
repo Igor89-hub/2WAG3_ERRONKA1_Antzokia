@@ -92,6 +92,8 @@ Route::get('/DatuPertsonalak', [DatuPertsonalakControler::class, 'open'])
 
 Route::post('/DatuPertsonalak', [DatuPertsonalakControler::class, 'store'])
     ->name('DatuPertsonalak.store');
+    Route::get('/ekitaldiak/{id}', [EkitaldiakController::class, 'show'])
+    ->name('ekitaldiak.show');
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

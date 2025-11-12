@@ -50,25 +50,26 @@ export default function EkitaldiakAntzokia({ ekitaldiGuztiak }: EkitaldiOrriaPro
                 </header>
             </div>
             <div className='e-main-ekitaldiZerrenda'>
-                {ekitaldiGuztiak ? (
-                    ekitaldiGuztiak.length > 0 ? (
-                        ekitaldiGuztiak.map((eki) => (
-                            <div
-                            key={eki.id_ekitaldia}
-                            onClick={() => handleEditatuEkitaldia(eki.id_ekitaldia)}
-                            >
-                                <EkitaldiGuztiak ekitaldiak={eki} />
-                            </div>
+                        {ekitaldiGuztiak ? (
+                            ekitaldiGuztiak.length > 0 ? (
+                                ekitaldiGuztiak.map((eki) => (
+                                    <div className='col-3'
+                                    key={eki.id_ekitaldia}
+                                    onClick={() => handleEditatuEkitaldia(eki.id_ekitaldia)}
+                                    >
+                                        <EkitaldiGuztiak ekitaldiak={eki} />
+                                    </div>
 
-                        ))
-                    ) : (
-                        // QUÉ FALTA 1: Esto se muestra si el array está vacío
-                        <p>Ez dago ekitaldi gehiagorik.</p>
-                    )
-                ) : (
-                    // QUÉ FALTA 2: Esto se muestra si besteEkitaldiak es null o undefined
-                    <p>Ekitaldiak kargatzen...</p>
-                )}
+                                ))
+                            ) : (
+                                // QUÉ FALTA 1: Esto se muestra si el array está vacío
+                                <p>Ez dago ekitaldi gehiagorik.</p>
+                            )
+                        ) : (
+                            // QUÉ FALTA 2: Esto se muestra si besteEkitaldiak es null o undefined
+                            <p>Ekitaldiak kargatzen...</p>
+                        )}
+                
             </div>
             <div className='e-main-sortuBotoia'>
                 <button type='button' className='e-main-sortuBotoia-route' value="SORTU" id='sortuBotoia' onClick={() => handleEkitaldiBerria()}>SORTU BERRIA</button>

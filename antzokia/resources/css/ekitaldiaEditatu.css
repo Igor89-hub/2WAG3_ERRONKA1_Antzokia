@@ -15,3 +15,36 @@
     border: none;
     border-radius: 7px;
 }
+/* Contenedor fijo para evitar huecos feos en escritorio */
+.eb-main-formTable-preview{
+  width: 200px;         /* ajusta a tu gusto */
+  aspect-ratio: 3 / 4;  /* mantiene proporción */
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* La imagen rellena sin deformarse */
+.eb-main-formTable-previewImg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto cuando no hay imagen */
+.eb-main-formTable-previewPlaceholder{
+  color: #999;
+  font-size: 14px;
+}
+
+/* Si quieres otro tamaño en móvil */
+@media (max-width: 768px){
+  .eb-main-formTable-preview{
+    width: 160px;
+    aspect-ratio: 1 / 1;
+  }
+}

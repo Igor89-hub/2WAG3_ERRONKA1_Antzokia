@@ -1,51 +1,77 @@
+/* CARD */
 .eg-main{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #D9D9D9;
-    box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;     /* móvil: apilado */
+  background: #D9D9D9;
+  border-radius: 20px;
+  overflow: hidden;           /* para que la imagen respete el radio */
+  box-shadow: rgba(0,0,0,.24) 0 3px 8px;
 }
+
+/* IMAGEN */
 .eg-main-ekitakdiIrudia{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex: 0 0 auto;
+  height: 220px;              /* alto fijo en móvil */
 }
 .eg-main-ekitakdiIrudia-img{
-    object-fit: cover;
-    width: 100%;
-    border-radius: 20px 20px 0 0;
-    filter: brightness(60%);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* recorta sin deformar */
+  filter: brightness(60%);
 }
+
+/* COLUMNA DERECHA (TEXTO+BOTÓN) — CENTRADO */
 .eg-main-ekitakdiInformazioa{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* centra vertical */
+  align-items: center;        /* centra horizontal */
+  gap: 18px;                  /* separación entre título y botón */
+  padding: 24px;
 }
+
+/* Si tienes wrappers “separator”, que no rompan el layout */
 .eg-main-ekitakdiInformazioa-cotentSeparator{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    padding: 15px 30px;
-    box-sizing: border-box;
+  display: contents;          /* deja pasar los hijos */
+  padding: 0;
 }
-.eg-main-ekitakdiInformazioa-izena{
-    text-align: center;
-    display: block;
-    color: black;
-    font-size: 18px;
-}
+
+/* TIPOGRAFÍA Y BOTÓN */
+.eg-main-ekitakdiInformazioa-izena{ font-size: 18px; text-align:center; color:#000; }
 .eg-main-ekitakdiInformazioa-erosiBotoia{
-    padding: 11px 22px;
-    font-size: 18px;
-    background-color: #D4AF37;
-    outline: none;
-    border: none;
-    border-radius: 20px;
+  padding: 11px 22px; font-size: 16px;
+  background: #D4AF37; border:0; border-radius: 20px;
+}
+
+/* Escritorio */
+@media (min-width: 1024px){
+  .eg-main{
+    flex-direction: row;      /* dos columnas */
+    height: 250px;            /* todas las tarjetas iguales */
+    align-items: stretch;
+  }
+  .eg-main-ekitakdiIrudia{
+    flex: 0 0 420px;          /* ancho fijo columna imagen */
+    height: 100%;
+  }
+  .eg-main-ekitakdiIrudia-img{
+    border-radius: 20px 0 0 20px;
+  }
+  .eg-main-ekitakdiInformazioa{
+    flex: 1 1 auto;
+    height: 100%;
+    padding: 0 48px;          /* margen lateral cómodo */
+    gap: 24px;
+  }
+}
+
+/* Muy grandes */
+@media (min-width: 1440px){
+  .eg-main{ max-width: 1200px; margin: 0 auto; }
+  .eg-main-ekitakdiIrudia{ flex-basis: 500px; }
+  .eg-main-ekitakdiInformazioa-izena{ font-size: 22px; }
+  .eg-main-ekitakdiInformazioa-erosiBotoia{ padding: 20px 25px; font-size: 25px; }
 }
