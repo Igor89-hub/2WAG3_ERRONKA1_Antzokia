@@ -67,6 +67,7 @@ export default function Hasiera({ aurrenekoEkitaldia, besteEkitaldiak }: Hasiera
             besteEkitaldiak.map((ekitaldi) => (
               // 👇 toda la tarjeta navega a /erosketa/{id}
               <div
+                className='a-main-ekitaldeGehiago-txartela'
                 key={ekitaldi.id_ekitaldia}
                 onClick={() => goToBuy(ekitaldi.id_ekitaldia)}
                 style={{ cursor: 'pointer' }}

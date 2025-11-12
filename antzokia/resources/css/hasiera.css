@@ -61,7 +61,8 @@
     text-align: center;
     font-weight: 500;
 }
-.a-main-aurrenekoEkitaldia-data{
+
+.a-main-aurrenekoEkitaldia-data {
     width: 100%;
     height: auto;
     display: flex;
@@ -71,12 +72,14 @@
     height: 100px;
     box-sizing: border-box;
 }
-.a-main-aurrenekoEkitaldia-dataTestua{
+
+.a-main-aurrenekoEkitaldia-dataTestua {
     font-size: 20px;
     font-weight: 200;
     text-align: center;
 }
-.a-main-aurrenekoEkitaldia-botoia{
+
+.a-main-aurrenekoEkitaldia-botoia {
     width: 100%;
     height: auto;
     display: flex;
@@ -85,7 +88,8 @@
     padding: 15px 30px;
     box-sizing: border-box;
 }
-.a-main-aurrenekoEkitaldia-botoiaAkzioa{
+
+.a-main-aurrenekoEkitaldia-botoiaAkzioa {
     padding: 15px 30px;
     font-size: 20px;
     border-radius: 15px;
@@ -94,7 +98,8 @@
     font-weight: 400;
     background-color: #D4AF37;
 }
-.a-main-ekitaldeGehiago{
+
+.a-main-ekitaldeGehiago {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -104,11 +109,20 @@
     box-sizing: border-box;
     gap: 30px;
 }
-.a-main-ekitaldeGehiago-titulua{
+
+.a-main-ekitaldeGehiago-titulua {
     color: black;
     font-weight: 800;
     text-align: center;
     padding: 16px 32px;
+}
+
+.a-main-ekitaldeGehiago-txartela {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 @media screen and (min-width: 1024px) {
@@ -126,7 +140,7 @@
         font-size: 26px;
     }
 
-    .a-main-aurrenekoEkitaldia-botoiaAkzioa{
+    .a-main-aurrenekoEkitaldia-botoiaAkzioa {
         padding: 18px 36px;
         font-size: 22px;
         cursor: pointer;
@@ -136,5 +150,9 @@
         padding: 18px 40px;
         font-size: 20px;
         cursor: pointer;
+    }
+
+    .a-main-ekitaldeGehiago-txartela {
+        max-width: 1000px;
     }
 }
