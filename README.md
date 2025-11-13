@@ -246,5 +246,3 @@ Lan hau [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 [cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
 ---
-
-> **Oharra:** Irudiak `./images/` karpetan gorde behar dituzu eta izenen bat aldatu behar baduzu, markdowneko erreferentziak ere aldatu behar dituzu.
