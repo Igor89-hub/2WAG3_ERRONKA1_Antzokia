@@ -66,6 +66,14 @@ export default function GuriBuruz() {
           </p>
         </div>
       </section>
+      <section className='gb-license'>
+        <header className='gb-license-header'>
+            <h1 className='gb-license-header-title'>ERABILITAKO LIZENTZIA</h1>
+        </header>
+        <div className='gb-license-image'>
+            <img src="/images/CC_BY-SA_icon.svg.png" alt="Lizentzia" />
+        </div>
+      </section>
     </div>
   );
 }
