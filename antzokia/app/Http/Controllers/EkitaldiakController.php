@@ -17,8 +17,15 @@ class EkitaldiakController extends Controller
         return Inertia::render('ekitaldiak', ['ekitaldiGuztiak' => $ekitaldiGuztiak]);
     }
 
-    public function destroy(Ekitaldia $ekitaldia){
+    public function destroy(Ekitaldia $ekitaldia)
+    {
+        // PASO 1: Borrar los registros hijos (los asientos) primero
+        // Esto borra todas las filas en 'ekitaldi_eserleku' donde el ID del evento coincida
+        DB::table('ekitaldi_eserleku')->where('id_ekitaldia', $ekitaldia->id_ekitaldia)->delete();
+
+        // PASO 2: Ahora sí, borrar el evento (el padre)
         $ekitaldia->delete();
+
         return redirect()->route('ekitaldiak')->with('message', 'Ekitaldia ezabatuta');
     }
 
@@ -95,6 +102,6 @@ class EkitaldiakController extends Controller
 
         $ekitaldia->update($data);
 
-         return redirect()->route('ekitaldiak')->with('success', 'Ekitaldia ondo eguneratu da!');
+        return redirect()->route('ekitaldiak')->with('success', 'Ekitaldia ondo eguneratu da!');
     }
 }

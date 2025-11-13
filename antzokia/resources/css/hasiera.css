@@ -16,7 +16,12 @@
     flex-direction: column;
     box-sizing: border-box;
 }
-
+.a-main-headerTopBar-logo{
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .a-main-header {
     padding: 12px 24px;
     width: 100%;
