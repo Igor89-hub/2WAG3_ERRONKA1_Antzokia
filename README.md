@@ -94,6 +94,9 @@
 
 ## ZEREGINAK ETA KRONOGRAMA
 
+![GANTT](./images/gantt.png)
+*Gantt*
+
 ---
 
 ## BALIABIDEAK
