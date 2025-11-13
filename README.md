@@ -98,7 +98,7 @@
 
 ## BALIABIDEAK
 
-### 4.1 BALIABIDE MATERIALAK
+### BALIABIDE MATERIALAK
 
 <p align="justify">Proiektu hau aurrera ateratzeko hainbat tresna eta baliabide erabili dira, bai diseinu-fasean bai programazioan. Baliabide hauek proiektuaren kalitatea, antolaketa eta koherentzia bisuala bermatzen lagundu dute.</p>
 
@@ -213,14 +213,23 @@
 ## ERANSKINAK
 
 ### Eranskina: Talde kontratua
+![Talde Kontratua](./images/talde_kontratua.png)
 
 ### Eranskina: Entitate-Erlazio diagrama
+![Entitate-Erlazio Diagrama](./images/entitate_erlazio.png)
 
-### Eranskina: Eredu erlazionala
+### Eranskina: Eredu erlazional
+![Eredu Erlazionala](./images/eredu_erlazionala.png)
 
 ### Eranskina: Use-Case diagrama
+![Use-Case Diagrama](./images/use_case.png)
 
-### 5. Eranskina: Web orrialdeen bozetoa, nabigazio mapa, estilo gida eta prototipoa
+### Eranskina: Web orrialdeen bozetoa, nabigazio mapa, estilo gida eta prototipoa
+![Bozetoa](./images/bozetoa_1.png)
+![Bozetoa](./images/bozetoa_2.png)
+![Nabigazio Mapa](./images/nabigazio_mapa_1.png)
+![Nabigazio Mapa](./images/nabigazio_mapa_2.png)
+![Nabigazio Mapa](./images/nabigazio_mapa_3.png)
 
 ---
 
