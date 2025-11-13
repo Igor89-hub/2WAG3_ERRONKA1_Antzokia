@@ -163,6 +163,7 @@ Honen bidez proiektu osoa zure programazio-ingurunean klonatuko da; nire kasuan,
 git clone https://github.com/Igor89-hub/2WAG3_ERRONKA1_Antzokia.git
 cd 2WAG3_ERRONKA1_Antzokia/antzokia
 ```
+![captura1](./images/Captura_1.png)
 
 ### 2) .env fitxategia eta app key sortu
 
@@ -170,7 +171,12 @@ Honen bidez datuak enkriptatu eta konexio propioak egin ahal izango dira.
 
 **command not found** bezalako mezuren bat agertzen bazaizu, PHP-rekin dago arazoa; egiaztatu ondo instalatuta dagoen edo Path ez dagoen behar bezala ezarrita.
 
+![captura2](./images/Captura_2.png)
+
 Hemendik ingurune-aldagaietara (Environment Variables) joan, gero Path aukeratu eta Editatu sakatu; ondoren Berria (New) hautatu eta esteka gehitu. Horrekin dena ondo funtzionatu beharko luke.
+
+![captura3](./images/Captura_3.png)
+
 ```bash
 cp .env.example .env
 nano .env (terminaletik aldatu nahi baduzu)
@@ -318,22 +324,35 @@ Ireki:  http://127.0.0.1:8000.
 
 ### Eranskina: Talde kontratua
 ![Talde Kontratua](./images/talde_kontratua.png)
+*Talde kontratua*
 
 ### Eranskina: Entitate-Erlazio diagrama
 ![Entitate-Erlazio Diagrama](./images/entitate_erlazio.png)
+*Entitate erlazio diagrama*
 
 ### Eranskina: Eredu erlazional
 ![Eredu Erlazionala](./images/eredu_erlazionala.png)
+*Eredu erlazionala*
 
 ### Eranskina: Use-Case diagrama
 ![Use-Case Diagrama](./images/use_case.png)
+*Use-case diagrama*
 
 ### Eranskina: Web orrialdeen bozetoa, nabigazio mapa, estilo gida eta prototipoa
 ![Bozetoa](./images/bozetoa_1.png)
+*Bozetoa 1*
+
 ![Bozetoa](./images/bozetoa_2.png)
+*Bozetoa 2*
+
 ![Nabigazio Mapa](./images/nabigazio_mapa_1.png)
+*Nabigazio Mapa 1*
+
 ![Nabigazio Mapa](./images/nabigazio_mapa_2.png)
+*Nabigazio Mapa 2*
+
 ![Nabigazio Mapa](./images/nabigazio_mapa_3.png)
+*Nabigazio Mapa 3*
 
 ---
 
