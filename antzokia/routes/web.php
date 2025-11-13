@@ -38,14 +38,14 @@ Route::get('/ekitaldiakUserXehetasunak/{id}', [EkitaldiakUserXehetasunakControll
 //LOGIN Y REGISTER
 //PONEMOS TODAS LAS OPERACIONES DEL LOGIN DENTRO DE UN GRUPO (FUNCIONARA COMO SIEMPRE PERO ASI QUEDA MUCHO MAS LIMPIO)
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/Users/login', 'openLogin')->name('login');
-    Route::post('/Users/login', 'login')->name('login.store');
+    Route::get('/Users/login', 'openLogin')->name('login.form');
+    Route::post('/Users/login', 'login')->name('login.submit');
     Route::post('/logout', 'logout')->name('logout');
 });
 
 Route::controller(RegisterController::class)->group(function () {
-    Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name('register');
-    Route::post('/Users/register', [RegisterController::class, 'store'])->name('register.store');
+    Route::get('/Users/register', [RegisterController::class, 'openRegister'])->name('register.form');
+    Route::post('/Users/register', [RegisterController::class, 'store'])->name('register.submit');
 });
 
 
