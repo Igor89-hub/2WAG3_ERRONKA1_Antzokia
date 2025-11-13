@@ -139,6 +139,110 @@
 
 ## INSTALAZIO PROZESUA
 
+
+## Funtzionamendurako eskakizunak
+
+* Git
+* PHP 8.2+ (gomendatua Laravel 12.x bertsiorako)
+* Composer 2
+* MySQL (edo MariaDB)
+* Node.js 18+ eta npm (Vite-rako)
+* Windows: XAMPP/WAMP-ek PHP+MySQL errazten dute;  macOS: MAMP edo zerbitzu natiboak;  Linux: sistemako paketeak.
+
+Kodearekin interakzionatzeko ingurune bat ere beharko duzu; nire gomendioa Visual Studio Code da.
+
+XAMPP erabiltzen baduzu, askotan erabiltzailea root izaten da eta MySQL-eko pasahitza hutsik uzten da; MAMP-en, berriz, ataka ohikoa 8889 izaten da eta erabiltzailea/pasahitza root/root.
+
+
+Hau PowerShell edo CMD bidez egin daiteke, baina erosoagoa denez guk GIT Bash erabiltzen dugu.
+
+### 1) Proiektua klonatu
+
+Honen bidez proiektu osoa zure programazio-ingurunean klonatuko da; nire kasuan, Visual Studio Code.
+```bash
+git clone https://github.com/Igor89-hub/2WAG3_ERRONKA1_Antzokia.git
+cd 2WAG3_ERRONKA1_Antzokia/antzokia
+```
+
+### 2) .env fitxategia eta app key sortu
+
+Honen bidez datuak enkriptatu eta konexio propioak egin ahal izango dira.
+
+**command not found** bezalako mezuren bat agertzen bazaizu, PHP-rekin dago arazoa; egiaztatu ondo instalatuta dagoen edo Path ez dagoen behar bezala ezarrita.
+
+Hemendik ingurune-aldagaietara (Environment Variables) joan, gero Path aukeratu eta Editatu sakatu; ondoren Berria (New) hautatu eta esteka gehitu. Horrekin dena ondo funtzionatu beharko luke.
+```bash
+cp .env.example .env
+nano .env (terminaletik aldatu nahi baduzu)
+php artisan key:generate
+```
+
+### 3) Datu-basea sortu eta .env konfiguratu
+
+Sortu datu-base huts bat (adibidez, antzokia) utf8mb4 / utf8mb4_unicode_ci erabiliz. Edo nahi izanez gero, hori ingurune grafiko batean ere egin daiteke, adibidez Workbench erabiliz.
+
+Ireki .env fitxategia eta egokitu:
+
+**OHARRA: HAU ADIBIDE BAT DA. Datu-basea nola sortzen duzunaren arabera, edukia alda daiteke.**
+```env
+APP_NAME="Antzokia"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=antzokia
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4) Menpekotasunak instalatu
+```bash
+composer install
+npm install
+```
+
+### 5) Datuak kargatu (aukera 1 edo 2 aukeratu)
+
+**Aukera A — Migraketak + seeders (gomendatua, baldin eta barne dauden)**
+```bash
+php artisan migrate --seed
+```
+
+**Aukera B — Repoan dagoen SQL dump-a inportatu**
+
+cherryDatabase.sql / cherry_batabase.sql.
+
+Inportatu bat MySQL-en (phpMyAdmin, DBeaver edo Workbench erabiliz). Ondoren, .env fitxategian ziurtatu datu-basearen izena inportatutakoarekin bat datorrela.
+
+**Ohar garrantzitsua: Dump-a inportatzen baduzu, ez exekutatu migraketak/seeders.**
+
+### 6) Storage-a lotu (enlazar) (igoerak)
+```bash
+php artisan storage:link
+```
+
+### 7) Assets-ak konpilatu (Vite)
+
+Garapenerako (watch):
+```bash
+npm run dev
+```
+
+Eraiki optimizaturako (build optimizatu):
+```bash
+npm run build
+```
+
+### 8) Laravel zerbitzaria martxan jarri
+```bash
+php artisan serve
+```
+
+Ireki:  http://127.0.0.1:8000.
+
 ---
 
 ## CREATIVE COMMONS LIZENTZIA
