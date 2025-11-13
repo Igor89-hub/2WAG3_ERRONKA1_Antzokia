@@ -38,7 +38,7 @@ Dokumentazio honetan erabilitako teknologien azalpena, hartutako erabakiak, inst
 
 ### HELBURU OROKORRA
 
-Proiektu honen helburu orokorra Bergarako Antzokiaren ekitaldiak online erakusteko eta sarrerak Internet bidez saltzeko web aplikazio bat garatzea izan da, erabilerraza, segurua eta erakargarria den plataforma baten bidez. Aplikazioak bisitariei esperientzia digital intuitiboa eskaintzen die eta administratzaileei kudeaketa eraginkorra eta datuen kontrola errazten die.
+<p align="justify">Proiektu honen helburu orokorra Bergarako Antzokiaren ekitaldiak online erakusteko eta sarrerak Internet bidez saltzeko web aplikazio bat garatzea izan da, erabilerraza, segurua eta erakargarria den plataforma baten bidez. Aplikazioak bisitariei esperientzia digital intuitiboa eskaintzen die eta administratzaileei kudeaketa eraginkorra eta datuen kontrola errazten die.</p>
 
 ### HELBURU ESPEZIFIKOAK
 
